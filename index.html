@@ -4,6 +4,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="referrer" content="strict-origin-when-cross-origin">
 <meta name="theme-color" content="#21143c">
 
 <title>Para Jimena ❄️</title>
@@ -895,44 +896,65 @@ function launchFireworks() {
 document.getElementById('fireworksButton')
   .addEventListener('click', launchFireworks);
 
-// ==============================
-// MUSICA SNOW FLOWER - V BTS
-// ==============================
+
+ // ==============================
+ // MUSICA SNOW FLOWER - V BTS
+ // ==============================
 
 const playButton = document.getElementById('playMusic');
+const playerContainer = document.getElementById('playerContainer');
 
-const playerContainer =
-  document.getElementById('playerContainer');
+const VIDEO_ID = '2nY0spA5UL4';
 
 playButton.addEventListener('click', () => {
 
-  if (playerContainer.hasChildNodes()) {
+  // Si el reproductor ya existe, lo mostramos.
+  if (playerContainer.querySelector('iframe')) {
     playerContainer.hidden = false;
+
     playerContainer.scrollIntoView({
       behavior: 'smooth',
-      block: 'nearest'
+      block: 'center'
     });
+
     return;
   }
 
+  // Crear reproductor oficial de YouTube
   const iframe = document.createElement('iframe');
 
   iframe.src =
-    'https://www.youtube-nocookie.com/embed/2nY0spA5UL4?autoplay=1&playsinline=1&rel=0';
+    `https://www.youtube.com/embed/${VIDEO_ID}?autoplay=1&playsinline=1&rel=0`;
 
   iframe.title = 'Snow Flower - V feat. Peakboy';
+
+  iframe.referrerPolicy =
+    'strict-origin-when-cross-origin';
 
   iframe.allow =
     'autoplay; encrypted-media; picture-in-picture';
 
   iframe.allowFullscreen = true;
 
+  iframe.style.width = '100%';
+  iframe.style.aspectRatio = '16 / 9';
+  iframe.style.border = 'none';
+  iframe.style.borderRadius = '14px';
+
   playerContainer.appendChild(iframe);
   playerContainer.hidden = false;
 
   playButton.textContent = '🎵 Snow Flower';
 
+  // Si la reproducción automática está bloqueada,
+  // la persona podrá presionar Play en YouTube.
+  playerContainer.scrollIntoView({
+    behavior: 'smooth',
+    block: 'center'
+  });
+
 });
+
 
 // ==============================
 // ABRIR SORPRESA
