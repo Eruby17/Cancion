@@ -5,19 +5,11 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="referrer" content="strict-origin-when-cross-origin">
-<meta name="theme-color" content="#21143c">
-
+<meta name="theme-color" content="#24143f">
 <title>Para Jimena ❄️</title>
 
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@400;500;600;700&family=Playfair+Display:wght@400;500;600&display=swap');
-
-:root {
-  --purple: #8a2be2;
-  --dark-purple: #281444;
-  --lavender: #d9c3ff;
-  --white: #fff9ff;
-}
 
 * {
   box-sizing: border-box;
@@ -26,9 +18,6 @@
 body {
   margin: 0;
   min-height: 100vh;
-  overflow-x: hidden;
-  color: var(--white);
-  font-family: 'Quicksand', sans-serif;
   background:
     radial-gradient(
       ellipse at 50% 75%,
@@ -36,97 +25,68 @@ body {
       #332052 45%,
       #15132f 100%
     );
+  color: #fff9ff;
+  font-family: 'Quicksand', sans-serif;
+  overflow-x: hidden;
 }
 
 [hidden] {
   display: none !important;
 }
 
-/* CIELO ESTRELLADO */
+/* CIELO, NIEVE Y ROSAS */
 
-#stars,
-#snow,
-#roses {
+#stars, #snow, #roses {
   position: fixed;
   inset: 0;
-  pointer-events: none;
   overflow: hidden;
+  pointer-events: none;
 }
 
 #stars { z-index: 0; }
-#snow { z-index: 6; }
-#roses { z-index: 7; }
+#snow { z-index: 5; }
+#roses { z-index: 6; }
 
 .star {
   position: absolute;
   width: 2px;
   height: 2px;
-  border-radius: 50%;
   background: white;
+  border-radius: 50%;
   animation: twinkle 3s infinite alternate;
 }
 
 @keyframes twinkle {
-  from { opacity: .12; }
-  to { opacity: .95; }
+  from { opacity: .1; }
+  to { opacity: 1; }
 }
 
-/* COPOS DE NIEVE */
-
-.snowflake {
+.snowflake, .rose {
   position: absolute;
-  top: -40px;
-  color: white;
-  text-shadow: 0 0 12px #d4d8ff;
-  animation: snowfall linear forwards;
+  top: -45px;
+  animation: falling linear infinite;
   will-change: transform;
 }
 
-@keyframes snowfall {
+.snowflake {
+  color: white;
+  text-shadow: 0 0 12px #e0ddff;
+}
+
+.rose {
+  filter: drop-shadow(0 4px 8px #120a2080);
+}
+
+@keyframes falling {
   from {
     transform:
-      translate3d(0, -40px, 0)
-      rotate(0deg);
+      translate3d(0,-40px,0)
+      rotate(-20deg);
   }
   to {
     transform:
-      translate3d(var(--drift), 115vh, 0)
-      rotate(360deg);
-  }
-}
-
-/* ROSAS CAYENDO */
-
-.rose {
-  position: absolute;
-  top: -55px;
-  display: inline-block;
-  animation: rosefall linear forwards;
-  filter: drop-shadow(0 4px 9px #10091f80);
-  will-change: transform;
-}
-
-@keyframes rosefall {
-  0% {
-    transform:
-      translate3d(0, -55px, 0)
-      rotate(-35deg);
-    opacity: 0;
-  }
-
-  10% {
-    opacity: .95;
-  }
-
-  85% {
-    opacity: .95;
-  }
-
-  100% {
-    transform:
-      translate3d(var(--drift), 115vh, 0)
-      rotate(400deg);
-    opacity: 0;
+      translate3d(var(--drift),115vh,0)
+      rotate(390deg);
   }
 }
 
@@ -134,27 +94,27 @@ body {
 
 .moon {
   position: fixed;
+  right: 8%;
   top: 6%;
-  right: 9%;
-  width: 75px;
-  height: 75px;
+  width: 70px;
+  height: 70px;
   border-radius: 50%;
-  background: #fff2db;
+  background: #fff2d8;
   box-shadow:
     0 0 35px #fff3c280,
-    0 0 90px #dfccff40;
+    0 0 95px #ddc6ff60;
   z-index: 0;
 }
 
 .moon::after {
   content: '';
   position: absolute;
-  left: 19px;
-  top: -9px;
-  width: 70px;
-  height: 70px;
+  left: 18px;
+  top: -7px;
+  width: 65px;
+  height: 65px;
+  background: #1e1838;
   border-radius: 50%;
-  background: #21183a;
 }
 
 /* CONTENIDO */
@@ -162,16 +122,16 @@ body {
 .container {
   position: relative;
   z-index: 2;
-  width: min(790px, 100%);
+  width: min(790px,100%);
   margin: auto;
-  padding: 65px 18px 85px;
+  padding: 60px 18px 80px;
 }
 
 .card {
   text-align: center;
-  padding: 50px 30px;
-  border-radius: 34px;
   border: 1px solid #ffffff40;
+  border-radius: 34px;
+  padding: 50px 28px;
   background: rgba(255,255,255,.08);
   backdrop-filter: blur(13px);
   box-shadow: 0 25px 80px #09051e70;
@@ -179,124 +139,143 @@ body {
 
 .small-title {
   display: inline-block;
-  font-size: 12px;
-  letter-spacing: 3px;
-  color: #f1ddff;
-  padding: 11px 22px;
-  border: 1px solid #e5d0ff60;
+  padding: 10px 20px;
+  border: 1px solid #e3caff60;
   border-radius: 50px;
+  font-size: 12px;
+  letter-spacing: 2px;
+  color: #f0dcff;
 }
 
 h1 {
-  font-family: 'Playfair Display', serif;
-  font-size: clamp(47px, 9vw, 87px);
+  font-family: 'Playfair Display',serif;
+  font-size: clamp(48px,9vw,84px);
   font-weight: 500;
-  color: #f9e9ff;
-  margin: 32px 0 16px;
-  text-shadow: 0 0 35px #bc91ff70;
+  color: #f6e6ff;
+  margin: 30px 0 20px;
+  text-shadow: 0 0 30px #bd91ff70;
 }
 
 .subtitle {
-  max-width: 560px;
-  font-size: clamp(17px, 3vw, 21px);
+  max-width: 540px;
+  margin: 0 auto 35px;
   line-height: 1.9;
-  color: #e9d9ff;
-  margin: 0 auto 38px;
+  font-size: clamp(17px,3vw,21px);
+  color: #ecdfff;
 }
-
-/* DECORACION */
 
 .ornament {
   margin: 30px 0;
-  color: #dcc5ff;
+  color: #e1ccff;
   font-size: 24px;
-  letter-spacing: 12px;
+  letter-spacing: 8px;
 }
 
 /* MENSAJE */
 
 .message {
-  max-width: 565px;
+  max-width: 550px;
   margin: 35px auto;
-  font-family: 'Playfair Display', serif;
-  font-size: clamp(19px, 3.2vw, 25px);
+  font-family: 'Playfair Display',serif;
   line-height: 2;
-  color: #fff3ff;
+  font-size: clamp(19px,3vw,25px);
 }
 
 .message strong {
-  font-weight: 600;
   color: #ddc0ff;
+  font-weight: 600;
 }
 
-/* REPRODUCTOR */
+/* MUSICA */
 
 .music-card {
-  max-width: 580px;
-  margin: 42px auto 25px;
-  padding: 30px 20px;
+  max-width: 590px;
+  margin: 38px auto;
+  padding: 25px 17px;
+  border: 1px solid #cba8ff65;
   border-radius: 26px;
-  background: #160e3580;
-  border: 1px solid #c7a4ff55;
+  background: #150c3480;
 }
 
 .music-card h2 {
-  font-family: 'Playfair Display', serif;
-  font-size: 32px;
+  font-family: 'Playfair Display',serif;
+  font-size: 31px;
   font-weight: 500;
+  color: #ead4ff;
   margin: 0 0 12px;
-  color: #e9d2ff;
 }
 
 .artist {
-  font-size: 14px;
   color: #d3b9fa;
-  margin-bottom: 25px;
+  font-size: 14px;
+  margin-bottom: 19px;
 }
 
 .music-description {
-  color: #ebdcff;
+  color: #eadfff;
   line-height: 1.8;
-  font-size: 15px;
+  font-size: 14px;
 }
 
-#playerContainer {
-  margin-top: 20px;
-}
-
-#playerContainer iframe {
+.video-frame {
   width: 100%;
-  aspect-ratio: 16 / 9;
+  aspect-ratio: 16/9;
   display: block;
-  border: none;
-  border-radius: 14px;
+  border: 0;
+  border-radius: 15px;
+  background: #140f2d;
+  margin: 20px 0;
 }
 
-.music-link {
+.audio-frame {
+  width: 100%;
+  height: 125px;
+  display: block;
+  border: 0;
+  border-radius: 14px;
+  margin: 15px 0;
+}
+
+.backup-title {
+  margin-top: 28px;
+  color: #f4deff;
+  font-size: 14px;
+  font-weight: 700;
+}
+
+.link {
   display: inline-block;
-  margin-top: 18px;
-  color: #e8cfff;
+  color: #e5c8ff;
+  margin-top: 14px;
   font-size: 13px;
+}
+
+.note {
+  font-size: 12px;
+  color: #d6c4e9;
+  line-height: 1.7;
 }
 
 /* BOTONES */
 
-button {
+button, .music-button {
+  display: inline-block;
   border: 0;
-  padding: 16px 27px;
+  padding: 16px 25px;
   border-radius: 50px;
   font-family: inherit;
-  font-size: 15px;
+  font-size: 14px;
   font-weight: 700;
+  text-decoration: none;
   cursor: pointer;
-  transition: transform .2s, box-shadow .2s;
+  transition: transform .2s;
 }
 
-button:hover {
+button:hover, .music-button:hover {
   transform: translateY(-3px);
 }
 
-button:focus-visible {
+button:focus-visible, a:focus-visible {
   outline: 3px solid white;
   outline-offset: 4px;
 }
@@ -304,36 +283,26 @@ button:focus-visible {
 .btn-purple {
   background: linear-gradient(
     120deg,
-    #9b42f5,
-    #7430d9,
-    #5921ae
+    #a344f5,
+    #7731db,
+    #5520ac
   );
   color: white;
   box-shadow: 0 8px 28px #8731e980;
 }
 
-.btn-purple:hover {
-  box-shadow: 0 10px 34px #a254ff90;
-}
-
 .btn-outline {
-  background: #ffffff15;
-  color: white;
+  background: #ffffff18;
   border: 1px solid #d8b7ff7d;
+  color: white;
 }
 
 .actions {
-  margin: 30px auto;
   display: flex;
-  justify-content: center;
   flex-wrap: wrap;
+  justify-content: center;
   gap: 12px;
-}
-
-.footer {
-  font-size: 13px;
-  color: #d4bdf1;
-  line-height: 1.8;
+  margin: 30px auto;
 }
 
 /* FUEGOS ARTIFICIALES */
@@ -341,8 +310,10 @@ button:focus-visible {
 #fireworks {
   position: fixed;
   inset: 0;
-  pointer-events: none;
+  width: 100%;
+  height: 100%;
   z-index: 8;
+  pointer-events: none;
 }
 
 /* PANTALLA INICIAL */
@@ -362,9 +333,7 @@ button:focus-visible {
       #493074,
       #1d143b 75%
     );
-  transition:
-    opacity .8s ease,
-    visibility .8s ease;
+  transition: opacity .8s, visibility .8s;
 }
 
 .intro.hidden {
@@ -374,22 +343,22 @@ button:focus-visible {
 }
 
 .intro-card {
-  max-width: 460px;
-  padding: 44px 28px;
+  width: min(460px,100%);
+  padding: 44px 26px;
+  border: 1px solid #dbc0ff4f;
   border-radius: 34px;
   background: #ffffff0c;
-  border: 1px solid #dbc0ff4f;
   box-shadow: 0 20px 70px #0e082b55;
 }
 
 .envelope {
-  font-size: 92px;
+  font-size: 86px;
   animation: floatEnvelope 2s infinite alternate;
 }
 
 @keyframes floatEnvelope {
   from {
-    transform: translateY(0) rotate(-6deg);
+    transform: translateY(0) rotate(-5deg);
   }
   to {
     transform: translateY(-15px) rotate(5deg);
@@ -397,40 +366,38 @@ button:focus-visible {
 }
 
 .intro-title {
-  font-family: 'Playfair Display', serif;
-  font-size: clamp(34px, 7vw, 48px);
+  font-family: 'Playfair Display',serif;
   font-weight: 500;
+  font-size: clamp(34px,7vw,48px);
   color: #f4e3ff;
   margin: 25px 0 18px;
 }
 
 .intro-text {
-  color: #e2cff8;
+  font-size: 16px;
   line-height: 1.9;
-  font-size: 16px;
-  margin-bottom: 32px;
-}
-
-.intro-button {
-  min-width: 225px;
-  padding: 18px 27px;
-  font-size: 16px;
+  color: #e5d5fa;
+  margin-bottom: 30px;
 }
 
 /* CELULARES */
 
 @media(max-width:500px) {
   .container {
-    padding: 32px 12px 60px;
+    padding: 30px 12px 60px;
   }
 
   .card {
-    padding: 35px 15px;
-    border-radius: 26px;
+    padding: 35px 13px;
+    border-radius: 25px;
   }
 
   .music-card {
-    padding: 25px 12px;
+    padding: 24px 11px;
+  }
+
+  .intro-card {
+    padding: 35px 20px;
   }
 
   .moon {
@@ -439,14 +406,10 @@ button:focus-visible {
   }
 
   .moon::after {
-    width: 47px;
-    height: 47px;
+    width: 45px;
+    height: 45px;
     left: 12px;
-    top: -6px;
-  }
-
-  .intro-card {
-    padding: 35px 20px;
+    top: -5px;
   }
 }
 
@@ -460,13 +423,13 @@ button:focus-visible {
 
 <body>
 
-<!-- EFECTOS VISUALES -->
+<!-- FONDO Y ANIMACIONES -->
 
-<div id="stars"></div>
-<div class="moon"></div>
-<div id="snow"></div>
-<div id="roses"></div>
-<canvas id="fireworks"></canvas>
+<div id="stars" aria-hidden="true"></div>
+<div class="moon" aria-hidden="true"></div>
+<div id="snow" aria-hidden="true"></div>
+<div id="roses" aria-hidden="true"></div>
+<canvas id="fireworks" aria-hidden="true"></canvas>
 
 <!-- PANTALLA INICIAL -->
 
@@ -474,17 +437,18 @@ button:focus-visible {
 
   <section class="intro-card">
 
-    <div class="envelope">💌</div>
+    <div class="envelope">❄️</div>
 
     <h2 class="intro-title">
       Para Jimena
     </h2>
 
+    <p class="intro-text">
       Esta sorpresa es para ti.
     </p>
 
     <button
-      class="btn-purple intro-button"
+      class="btn-purple"
       id="openSurprise"
       type="button">
       Abrir mi sorpresa 💜
@@ -494,7 +458,7 @@ button:focus-visible {
 
 </div>
 
-<!-- CONTENIDO PRINCIPAL -->
+<!-- PAGINA PRINCIPAL -->
 
 <main class="container">
 
@@ -548,7 +512,7 @@ button:focus-visible {
     ❄ ✦ ❄
   </div>
 
-  <!-- CANCION -->
+  <!-- CANCION SNOW FLOWER -->
 
   <section class="music-card">
 
@@ -563,29 +527,57 @@ button:focus-visible {
       la nieve y las rosas que caen para ti.
     </p>
 
-    <button
-      id="playMusic"
-      class="btn-purple"
-      type="button">
-      ▶ Escuchar Snow Flower
-    </button>
+    <!-- VIDEO SIEMPRE VISIBLE -->
 
-    <div
-      id="playerContainer"
-      hidden>
-    </div>
+    <iframe
+      class="video-frame"
+      src="https://www.youtube-nocookie.com/embed/2nY0spA5UL4?playsinline=1&rel=0"
+      title="Snow Flower - V feat. Peakboy"
+      referrerpolicy="strict-origin-when-cross-origin"
+      allow="autoplay; encrypted-media; picture-in-picture; web-share"
+      allowfullscreen>
+    </iframe>
 
     <a
-      class="music-link"
+      class="music-button btn-purple"
       href="https://www.youtube.com/watch?v=2nY0spA5UL4"
       target="_blank"
-      rel="noopener noreferrer">
-      Escuchar en YouTube
+      rel="noopener">
+      ▶ Escuchar en YouTube
     </a>
+
+    <!-- AUDIO OFICIAL COMO ALTERNATIVA -->
+
+    <p class="backup-title">
+      🎵 También puedes escucharla aquí:
+    </p>
+
+    <iframe
+      class="audio-frame"
+      title="Snow Flower - BTS SoundCloud"
+      scrolling="no"
+      referrerpolicy="strict-origin-when-cross-origin"
+      allow="autoplay"
+      src="https://w.soundcloud.com/player/?url=https%3A%2F%2Fsoundcloud.com%2Fbangtan%2Fsnow-flower-by-v-of-bts-feat-peakboy&color=%238a2be2&auto_play=false&hide_related=true&show_comments=false&show_user=true&show_reposts=false">
+    </iframe>
+
+    <a
+      class="link"
+      href="https://soundcloud.com/bangtan/snow-flower-by-v-of-bts-feat-peakboy"
+      target="_blank"
+      rel="noopener">
+      Abrir canción oficial en SoundCloud ↗
+    </a>
+
+    <p class="note">
+      Presiona reproducir en el video o en el
+      reproductor de audio. Si alguno está bloqueado
+      en tu dispositivo, utiliza el enlace externo.
+    </p>
 
   </section>
 
-  <!-- CONTROLES -->
+  <!-- CONTROLES DE EFECTOS -->
 
   <div class="actions">
 
@@ -612,12 +604,6 @@ button:focus-visible {
 
   </div>
 
-  <p class="footer">
-    Para Jimena, con todo mi cariño.
-    <br>
-    Que nunca falten los momentos bonitos.
-  </p>
-
 </section>
 
 </main>
@@ -625,190 +611,151 @@ button:focus-visible {
 <script>
 'use strict';
 
-// ==============================
+// ============================
 // ESTRELLAS
-// ==============================
+// ============================
 
 const stars = document.getElementById('stars');
 
-for (let i = 0; i < 90; i++) {
-
+for (let i = 0; i < 95; i++) {
   const star = document.createElement('span');
-
   star.className = 'star';
+
   star.style.left = Math.random() * 100 + '%';
   star.style.top = Math.random() * 100 + '%';
   star.style.animationDelay = Math.random() * 4 + 's';
 
   stars.appendChild(star);
-
 }
 
-// ==============================
-// NIEVE CAYENDO
-// ==============================
+// ============================
+// NIEVE Y ROSAS
+// ============================
 
 const snow = document.getElementById('snow');
+const roses = document.getElementById('roses');
 
-let snowCount = 0;
-const MAX_SNOW = 145;
+function createFalling(kind, temporary = false) {
 
-function createSnowflake() {
+  const container = kind === 'snowflake' ? snow : roses;
+  const maxCount = kind === 'snowflake' ? 160 : 70;
 
-  if (snowCount >= MAX_SNOW) return;
+  if (container.childElementCount >= maxCount) return;
 
-  const flake = document.createElement('span');
+  const element = document.createElement('span');
+  element.className = kind;
 
-  flake.className = 'snowflake';
+  if (kind === 'snowflake') {
+    const types = ['❄', '❅', '❆', '•'];
 
-  const symbols = ['❄', '❅', '❆', '•'];
+    element.textContent =
+      types[Math.floor(Math.random() * types.length)];
 
-  flake.textContent =
-    symbols[Math.floor(Math.random() * symbols.length)];
+    element.style.fontSize =
+      (9 + Math.random() * 17) + 'px';
 
-  flake.style.left = Math.random() * 100 + '%';
-  flake.style.fontSize = (8 + Math.random() * 17) + 'px';
-  flake.style.opacity = .3 + Math.random() * .65;
+    element.style.opacity =
+      .4 + Math.random() * .6;
 
-  const duration = 6 + Math.random() * 9;
-
-  flake.style.animationDuration = duration + 's';
-
-  flake.style.setProperty(
-    '--drift',
-    (Math.random() * 180 - 90) + 'px'
-  );
-
-  snow.appendChild(flake);
-  snowCount++;
-
-  flake.addEventListener('animationend', () => {
-    flake.remove();
-    snowCount--;
-  }, { once: true });
-
-}
-
-// Nieve continua
-
-setInterval(() => {
-
-  if (!document.hidden) {
-    createSnowflake();
+  } else {
+    element.textContent = '🌹';
+    element.style.fontSize =
+      (17 + Math.random() * 19) + 'px';
   }
 
-}, 120);
+  const duration = kind === 'snowflake'
+    ? 7 + Math.random() * 10
+    : 9 + Math.random() * 8;
 
-// Primera nevada
+  element.style.left = Math.random() * 100 + '%';
+  element.style.animationDuration = duration + 's';
 
-for (let i = 0; i < 65; i++) {
+  element.style.setProperty(
+    '--drift',
+    (Math.random() * 210 - 105) + 'px'
+  );
 
-  setTimeout(createSnowflake, i * 60);
+  if (temporary) {
 
+    element.style.animationIterationCount = '1';
+    element.style.animationDelay = '0s';
+
+    element.addEventListener(
+      'animationend',
+      () => element.remove(),
+      { once: true }
+    );
+
+  } else {
+
+    // Distribuir los copos y rosas por toda la pantalla
+    element.style.animationDelay =
+      -(Math.random() * duration) + 's';
+
+  }
+
+  container.appendChild(element);
 }
 
-// Más nieve al presionar botón
+// Nieve permanente
+for (let i = 0; i < 85; i++) {
+  createFalling('snowflake');
+}
 
+// Rosas permanentes
+for (let i = 0; i < 22; i++) {
+  createFalling('rose');
+}
+
+// Boton mas nieve
 document.getElementById('moreSnow')
   .addEventListener('click', () => {
 
-    for (let i = 0; i < 60; i++) {
-      setTimeout(createSnowflake, i * 35);
+    for (let i = 0; i < 30; i++) {
+      setTimeout(
+        () => createFalling('snowflake', true),
+        i * 45
+      );
     }
 
   });
 
-// ==============================
-// ROSAS CAYENDO
-// ==============================
-
-const roses = document.getElementById('roses');
-
-let roseCount = 0;
-const MAX_ROSES = 50;
-
-function createRose() {
-
-  if (roseCount >= MAX_ROSES) return;
-
-  const rose = document.createElement('span');
-
-  rose.className = 'rose';
-  rose.textContent = '🌹';
-
-  rose.style.left = Math.random() * 100 + '%';
-  rose.style.fontSize = (17 + Math.random() * 19) + 'px';
-
-  const duration = 7 + Math.random() * 8;
-
-  rose.style.animationDuration = duration + 's';
-
-  rose.style.setProperty(
-    '--drift',
-    (Math.random() * 230 - 115) + 'px'
-  );
-
-  roses.appendChild(rose);
-  roseCount++;
-
-  rose.addEventListener('animationend', () => {
-    rose.remove();
-    roseCount--;
-  }, { once: true });
-
-}
-
-// Rosas cayendo continuamente
-
-setInterval(() => {
-
-  if (!document.hidden) {
-    createRose();
-  }
-
-}, 720);
-
-// Rosas iniciales
-
-for (let i = 0; i < 16; i++) {
-
-  setTimeout(createRose, i * 330);
-
-}
-
-// Botón lluvia de rosas
-
+// Boton lluvia de rosas
 document.getElementById('moreRoses')
   .addEventListener('click', () => {
 
-    for (let i = 0; i < 35; i++) {
-      setTimeout(createRose, i * 110);
+    for (let i = 0; i < 28; i++) {
+      setTimeout(
+        () => createFalling('rose', true),
+        i * 80
+      );
     }
 
   });
 
-// ==============================
+// ============================
 // FUEGOS ARTIFICIALES
-// ==============================
+// ============================
 
 const canvas = document.getElementById('fireworks');
 const ctx = canvas.getContext('2d');
 
-let width, height, dpr;
+let width = 0;
+let height = 0;
+let dpr = 1;
 let particles = [];
 
 const colors = [
   '#b488ff',
-  '#dbc8ff',
+  '#e1d0ff',
   '#ffffff',
   '#a9cfff',
-  '#ffdbb0'
+  '#ffdab0'
 ];
 
 function resizeCanvas() {
 
   dpr = Math.min(window.devicePixelRatio || 1, 2);
-
   width = window.innerWidth;
   height = window.innerHeight;
 
@@ -827,7 +774,7 @@ function explode(x, y) {
   const color =
     colors[Math.floor(Math.random() * colors.length)];
 
-  for (let i = 0; i < 90; i++) {
+  for (let i = 0; i < 85; i++) {
 
     const angle = Math.random() * Math.PI * 2;
     const speed = 1 + Math.random() * 4;
@@ -896,69 +843,9 @@ function launchFireworks() {
 document.getElementById('fireworksButton')
   .addEventListener('click', launchFireworks);
 
-
- // ==============================
- // MUSICA SNOW FLOWER - V BTS
- // ==============================
-
-const playButton = document.getElementById('playMusic');
-const playerContainer = document.getElementById('playerContainer');
-
-const VIDEO_ID = '2nY0spA5UL4';
-
-playButton.addEventListener('click', () => {
-
-  // Si el reproductor ya existe, lo mostramos.
-  if (playerContainer.querySelector('iframe')) {
-    playerContainer.hidden = false;
-
-    playerContainer.scrollIntoView({
-      behavior: 'smooth',
-      block: 'center'
-    });
-
-    return;
-  }
-
-  // Crear reproductor oficial de YouTube
-  const iframe = document.createElement('iframe');
-
-  iframe.src =
-    `https://www.youtube.com/embed/${VIDEO_ID}?autoplay=1&playsinline=1&rel=0`;
-
-  iframe.title = 'Snow Flower - V feat. Peakboy';
-
-  iframe.referrerPolicy =
-    'strict-origin-when-cross-origin';
-
-  iframe.allow =
-    'autoplay; encrypted-media; picture-in-picture';
-
-  iframe.allowFullscreen = true;
-
-  iframe.style.width = '100%';
-  iframe.style.aspectRatio = '16 / 9';
-  iframe.style.border = 'none';
-  iframe.style.borderRadius = '14px';
-
-  playerContainer.appendChild(iframe);
-  playerContainer.hidden = false;
-
-  playButton.textContent = '🎵 Snow Flower';
-
-  // Si la reproducción automática está bloqueada,
-  // la persona podrá presionar Play en YouTube.
-  playerContainer.scrollIntoView({
-    behavior: 'smooth',
-    block: 'center'
-  });
-
-});
-
-
-// ==============================
+// ============================
 // ABRIR SORPRESA
-// ==============================
+// ============================
 
 document.getElementById('openSurprise')
   .addEventListener('click', () => {
@@ -967,21 +854,22 @@ document.getElementById('openSurprise')
 
     intro.classList.add('hidden');
 
-    setTimeout(() => {
-      intro.remove();
-    }, 850);
+    setTimeout(() => intro.remove(), 850);
 
-    // Celebración inicial
     launchFireworks();
 
-    // Lluvia especial de rosas
-    for (let i = 0; i < 30; i++) {
-      setTimeout(createRose, i * 130);
+    // Lluvia inicial de rosas
+    for (let i = 0; i < 25; i++) {
+
+      setTimeout(
+        () => createFalling('rose', true),
+        i * 110
+      );
+
     }
 
   });
 
 </script>
-
 </body>
 </html>
