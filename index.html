@@ -4,12 +4,17 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="referrer" content="strict-origin-when-cross-origin">
 <meta name="theme-color" content="#24143f">
 <title>Para Jimena ❄️</title>
 
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@400;500;600;700&family=Playfair+Display:wght@400;500;600&display=swap');
+
+:root {
+  --purple: #8a3de0;
+  --lavender: #dfc6ff;
+  --white: #fff9ff;
+}
 
 * {
   box-sizing: border-box;
@@ -18,6 +23,9 @@
 body {
   margin: 0;
   min-height: 100vh;
+  overflow-x: hidden;
+  color: var(--white);
+  font-family: 'Quicksand', sans-serif;
   background:
     radial-gradient(
       ellipse at 50% 75%,
@@ -25,16 +33,13 @@ body {
       #332052 45%,
       #15132f 100%
     );
-  color: #fff9ff;
-  font-family: 'Quicksand', sans-serif;
-  overflow-x: hidden;
 }
 
 [hidden] {
   display: none !important;
 }
 
-/* CIELO, NIEVE Y ROSAS */
+/* ESTRELLAS, NIEVE Y ROSAS */
 
 #stars, #snow, #roses {
   position: fixed;
@@ -51,38 +56,39 @@ body {
   position: absolute;
   width: 2px;
   height: 2px;
-  background: white;
   border-radius: 50%;
+  background: white;
   animation: twinkle 3s infinite alternate;
 }
 
 @keyframes twinkle {
-  from { opacity: .1; }
+  from { opacity: .12; }
   to { opacity: 1; }
 }
 
 .snowflake, .rose {
   position: absolute;
-  top: -45px;
+  top: -50px;
   animation: falling linear infinite;
   will-change: transform;
 }
 
 .snowflake {
   color: white;
-  text-shadow: 0 0 12px #e0ddff;
+  text-shadow: 0 0 12px #dee4ff;
 }
 
 .rose {
-  filter: drop-shadow(0 4px 8px #120a2080);
+  filter: drop-shadow(0 5px 8px #160b2980);
 }
 
 @keyframes falling {
   from {
     transform:
-      translate3d(0,-40px,0)
-      rotate(-20deg);
+      translate3d(0,-45px,0)
+      rotate(-25deg);
   }
+
   to {
     transform:
       translate3d(var(--drift),115vh,0)
@@ -117,23 +123,24 @@ body {
   border-radius: 50%;
 }
 
-/* CONTENIDO */
+/* CONTENEDOR PRINCIPAL */
 
 .container {
   position: relative;
   z-index: 2;
-  width: min(790px,100%);
+  width: min(790px, 100%);
   margin: auto;
   padding: 60px 18px 80px;
 }
 
 .card {
   text-align: center;
-  border: 1px solid #ffffff40;
-  border-radius: 34px;
   padding: 50px 28px;
+  border-radius: 34px;
+  border: 1px solid #ffffff40;
   background: rgba(255,255,255,.08);
   backdrop-filter: blur(13px);
+  -webkit-backdrop-filter: blur(13px);
   box-shadow: 0 25px 80px #09051e70;
 }
 
@@ -148,8 +155,8 @@ body {
 }
 
 h1 {
-  font-family: 'Playfair Display',serif;
-  font-size: clamp(48px,9vw,84px);
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(48px, 9vw, 84px);
   font-weight: 500;
   color: #f6e6ff;
   margin: 30px 0 20px;
@@ -171,12 +178,10 @@ h1 {
   letter-spacing: 8px;
 }
 
-/* MENSAJE */
-
 .message {
   max-width: 550px;
   margin: 35px auto;
-  font-family: 'Playfair Display',serif;
+  font-family: 'Playfair Display', serif;
   line-height: 2;
   font-size: clamp(19px,3vw,25px);
 }
@@ -186,20 +191,20 @@ h1 {
   font-weight: 600;
 }
 
-/* MUSICA */
+/* TARJETA MUSICAL */
 
 .music-card {
   max-width: 590px;
   margin: 38px auto;
-  padding: 25px 17px;
+  padding: 30px 20px;
   border: 1px solid #cba8ff65;
-  border-radius: 26px;
+  border-radius: 28px;
   background: #150c3480;
 }
 
 .music-card h2 {
-  font-family: 'Playfair Display',serif;
-  font-size: 31px;
+  font-family: 'Playfair Display', serif;
+  font-size: 32px;
   font-weight: 500;
   color: #ead4ff;
   margin: 0 0 12px;
@@ -208,7 +213,7 @@ h1 {
 .artist {
   color: #d3b9fa;
   font-size: 14px;
-  margin-bottom: 19px;
+  margin-bottom: 20px;
 }
 
 .music-description {
@@ -217,65 +222,151 @@ h1 {
   font-size: 14px;
 }
 
-.video-frame {
-  width: 100%;
-  aspect-ratio: 16/9;
-  display: block;
-  border: 0;
-  border-radius: 15px;
-  background: #140f2d;
-  margin: 20px 0;
+/* TOCADISCOS ANIMADO */
+
+.turntable {
+  position: relative;
+  width: 245px;
+  height: 245px;
+  margin: 27px auto 22px;
+  border-radius: 27px;
+  background:
+    linear-gradient(135deg,#8e6bad,#4e366f);
+  box-shadow:
+    0 14px 35px #05041570,
+    inset 0 2px #ffffff65;
+  border: 3px solid #a78fc2;
 }
 
-.audio-frame {
-  width: 100%;
-  height: 125px;
-  display: block;
-  border: 0;
-  border-radius: 14px;
-  margin: 15px 0;
+.vinyl {
+  position: absolute;
+  inset: 25px;
+  border-radius: 50%;
+  background:
+    repeating-radial-gradient(
+      circle,
+      #17121c 0px,
+      #17121c 3px,
+      #343039 4px,
+      #151117 6px
+    );
+  border: 4px solid #0b0a0c;
+  box-shadow: 0 8px 23px #0008;
+  display: grid;
+  place-items: center;
+  animation: spinVinyl 2.3s linear infinite;
+  animation-play-state: paused;
 }
 
-.backup-title {
-  margin-top: 28px;
-  color: #f4deff;
-  font-size: 14px;
-  font-weight: 700;
+.turntable.playing .vinyl {
+  animation-play-state: running;
 }
 
-.link {
-  display: inline-block;
-  color: #e5c8ff;
-  margin-top: 14px;
+.vinyl-label {
+  width: 75px;
+  height: 75px;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  background: linear-gradient(130deg,#be91fa,#7347ad);
+  border: 3px solid #e2c6ff;
+  color: white;
+  font-family: 'Playfair Display', serif;
   font-size: 13px;
+  box-shadow: 0 0 0 5px #21172b;
 }
 
-.note {
-  font-size: 12px;
-  color: #d6c4e9;
-  line-height: 1.7;
+.vinyl-label::after {
+  content: '';
+  position: absolute;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #f5eaff;
+}
+
+.tonearm {
+  position: absolute;
+  right: 33px;
+  top: 24px;
+  width: 8px;
+  height: 113px;
+  background: linear-gradient(90deg,#e6e6e6,#8b829a);
+  border-radius: 8px;
+  transform: rotate(27deg);
+  transform-origin: top center;
+  box-shadow: 2px 2px 4px #0008;
+}
+
+.tonearm::before {
+  content: '';
+  position: absolute;
+  top: -10px;
+  left: -8px;
+  width: 24px;
+  height: 24px;
+  background: #c5b2da;
+  border-radius: 50%;
+  border: 3px solid #79638c;
+}
+
+.tonearm::after {
+  content: '';
+  position: absolute;
+  bottom: -9px;
+  left: -5px;
+  width: 19px;
+  height: 24px;
+  border-radius: 4px;
+  background: #211a2d;
+}
+
+@keyframes spinVinyl {
+  to { transform: rotate(360deg); }
+}
+
+.playing-label {
+  color: #e4caff;
+  font-size: 13px;
+  margin: 10px 0 23px;
+}
+
+/* GIF DE TOCADISCOS */
+
+.gif-panel {
+  max-width: 360px;
+  margin: 22px auto;
+  padding: 10px;
+  background: #ffffff12;
+  border-radius: 18px;
+  border: 1px solid #ffffff30;
+}
+
+.gif-panel img {
+  display: block;
+  width: 100%;
+  border-radius: 12px;
 }
 
 /* BOTONES */
 
-button, .music-button {
-  display: inline-block;
+button {
   border: 0;
   padding: 16px 25px;
   border-radius: 50px;
   font-family: inherit;
   font-size: 14px;
   font-weight: 700;
-  text-decoration: none;
   cursor: pointer;
-  transition: transform .2s;
+  transition: transform .2s, box-shadow .2s;
 }
 
-button:hover, .music-button:hover {
+button:hover {
   transform: translateY(-3px);
 }
 
-button:focus-visible, a:focus-visible {
+button:focus-visible,
+input:focus-visible {
   outline: 3px solid white;
   outline-offset: 4px;
 }
@@ -293,16 +384,80 @@ button:focus-visible, a:focus-visible {
 
 .btn-outline {
   background: #ffffff18;
-  border: 1px solid #d8b7ff7d;
   color: white;
+  border: 1px solid #d8b7ff7d;
 }
+
+/* CONTROLES DE MUSICA */
+
+.player-controls {
+  margin: 25px auto 10px;
+}
+
+#musicButton {
+  min-width: 190px;
+}
+
+.progress-bar {
+  width: 100%;
+  margin: 22px 0 5px;
+  accent-color: #ae79f8;
+  cursor: pointer;
+}
+
+.time-row {
+  display: flex;
+  justify-content: space-between;
+  font-size: 12px;
+  color: #d7c1f4;
+  margin-bottom: 15px;
+}
+
+#musicStatus {
+  font-size: 13px;
+  color: #e4caff;
+  line-height: 1.7;
+  min-height: 21px;
+}
+
+.direct-link {
+  display: inline-block;
+  margin-top: 12px;
+  font-size: 12px;
+  color: #dfc9ff;
+}
+
+/* IMAGEN INFERIOR */
+
+.cover-section {
+  max-width: 450px;
+  margin: 48px auto 10px;
+}
+
+.cover-section img {
+  display: block;
+  width: 100%;
+  max-width: 360px;
+  margin: auto;
+  border-radius: 22px;
+  border: 3px solid #d8c1f0;
+  box-shadow: 0 15px 40px #09051c85;
+}
+
+.cover-caption {
+  margin-top: 17px;
+  font-size: 13px;
+  color: #e1caf5;
+}
+
+/* CONTROLES DE EFECTOS */
 
 .actions {
   display: flex;
-  flex-wrap: wrap;
   justify-content: center;
+  flex-wrap: wrap;
   gap: 12px;
-  margin: 30px auto;
+  margin: 32px auto;
 }
 
 /* FUEGOS ARTIFICIALES */
@@ -316,15 +471,15 @@ button:focus-visible, a:focus-visible {
   pointer-events: none;
 }
 
-/* PANTALLA INICIAL */
+/* PANTALLA DE BIENVENIDA */
 
 .intro {
   position: fixed;
   inset: 0;
   z-index: 20;
   display: flex;
-  align-items: center;
   justify-content: center;
+  align-items: center;
   padding: 20px;
   text-align: center;
   background:
@@ -345,9 +500,9 @@ button:focus-visible, a:focus-visible {
 .intro-card {
   width: min(460px,100%);
   padding: 44px 26px;
-  border: 1px solid #dbc0ff4f;
   border-radius: 34px;
   background: #ffffff0c;
+  border: 1px solid #dbc0ff4f;
   box-shadow: 0 20px 70px #0e082b55;
 }
 
@@ -367,8 +522,8 @@ button:focus-visible, a:focus-visible {
 
 .intro-title {
   font-family: 'Playfair Display',serif;
-  font-weight: 500;
   font-size: clamp(34px,7vw,48px);
+  font-weight: 500;
   color: #f4e3ff;
   margin: 25px 0 18px;
 }
@@ -378,6 +533,11 @@ button:focus-visible, a:focus-visible {
   line-height: 1.9;
   color: #e5d5fa;
   margin-bottom: 30px;
+}
+
+.intro-button {
+  min-width: 225px;
+  font-size: 16px;
 }
 
 /* CELULARES */
@@ -393,7 +553,7 @@ button:focus-visible, a:focus-visible {
   }
 
   .music-card {
-    padding: 24px 11px;
+    padding: 24px 12px;
   }
 
   .intro-card {
@@ -414,7 +574,11 @@ button:focus-visible, a:focus-visible {
 }
 
 @media(prefers-reduced-motion:reduce) {
-  .envelope, .star {
+  .envelope, .star, .snowflake, .rose {
+    animation: none;
+  }
+
+  .vinyl {
     animation: none;
   }
 }
@@ -423,13 +587,27 @@ button:focus-visible, a:focus-visible {
 
 <body>
 
-<!-- FONDO Y ANIMACIONES -->
+<!-- FONDO ANIMADO -->
 
 <div id="stars" aria-hidden="true"></div>
 <div class="moon" aria-hidden="true"></div>
 <div id="snow" aria-hidden="true"></div>
 <div id="roses" aria-hidden="true"></div>
 <canvas id="fireworks" aria-hidden="true"></canvas>
+
+<!-- AUDIO MP3 LOCAL -->
+
+<audio
+  id="song"
+  preload="metadata"
+  playsinline
+>
+  <source
+    src="./Snow%20Flower%20%28feat.%20Peakboy%29%20by%20V.mp3"
+    type="audio/mpeg"
+  >
+  Tu navegador no admite archivos MP3.
+</audio>
 
 <!-- PANTALLA INICIAL -->
 
@@ -448,7 +626,7 @@ button:focus-visible, a:focus-visible {
     </p>
 
     <button
-      class="btn-purple"
+      class="btn-purple intro-button"
       id="openSurprise"
       type="button">
       Abrir mi sorpresa 💜
@@ -458,7 +636,7 @@ button:focus-visible, a:focus-visible {
 
 </div>
 
-<!-- PAGINA PRINCIPAL -->
+<!-- CONTENIDO PRINCIPAL -->
 
 <main class="container">
 
@@ -512,7 +690,7 @@ button:focus-visible, a:focus-visible {
     ❄ ✦ ❄
   </div>
 
-  <!-- CANCION SNOW FLOWER -->
+  <!-- TARJETA MUSICAL -->
 
   <section class="music-card">
 
@@ -527,57 +705,84 @@ button:focus-visible, a:focus-visible {
       la nieve y las rosas que caen para ti.
     </p>
 
-    <!-- VIDEO SIEMPRE VISIBLE -->
+    <!-- TOCADISCOS -->
 
-    <iframe
-      class="video-frame"
-      src="https://www.youtube-nocookie.com/embed/2nY0spA5UL4?playsinline=1&rel=0"
-      title="Snow Flower - V feat. Peakboy"
-      referrerpolicy="strict-origin-when-cross-origin"
-      allow="autoplay; encrypted-media; picture-in-picture; web-share"
-      allowfullscreen>
-    </iframe>
+    <div
+      class="turntable"
+      id="turntable"
+      aria-label="Tocadiscos animado">
 
-    <a
-      class="music-button btn-purple"
-      href="https://www.youtube.com/watch?v=2nY0spA5UL4"
-      target="_blank"
-      rel="noopener">
-      ▶ Escuchar en YouTube
-    </a>
+      <div class="vinyl">
+        <div class="vinyl-label">
+          Snow<br>Flower
+        </div>
+      </div>
 
-    <!-- AUDIO OFICIAL COMO ALTERNATIVA -->
+      <div class="tonearm"></div>
 
-    <p class="backup-title">
-      🎵 También puedes escucharla aquí:
+    </div>
+
+    <p class="playing-label" id="playingLabel">
+      Tocadiscos preparado
     </p>
 
-    <iframe
-      class="audio-frame"
-      title="Snow Flower - BTS SoundCloud"
-      scrolling="no"
-      referrerpolicy="strict-origin-when-cross-origin"
-      allow="autoplay"
-      src="https://w.soundcloud.com/player/?url=https%3A%2F%2Fsoundcloud.com%2Fbangtan%2Fsnow-flower-by-v-of-bts-feat-peakboy&color=%238a2be2&auto_play=false&hide_related=true&show_comments=false&show_user=true&show_reposts=false">
-    </iframe>
+    <!-- GIF ANIMADO -->
 
-    <a
-      class="link"
-      href="https://soundcloud.com/bangtan/snow-flower-by-v-of-bts-feat-peakboy"
-      target="_blank"
-      rel="noopener">
-      Abrir canción oficial en SoundCloud ↗
-    </a>
+    <div class="gif-panel" id="gifPanel" hidden>
 
-    <p class="note">
-      Presiona reproducir en el video o en el
-      reproductor de audio. Si alguno está bloqueado
-      en tu dispositivo, utiliza el enlace externo.
-    </p>
+      <img
+        src="https://media.giphy.com/media/l4hLWkXgmia7WMNeo/giphy.gif"
+        alt="GIF de un disco girando en un tocadiscos"
+        loading="lazy"
+        onerror="this.parentElement.hidden=true"
+      >
+
+    </div>
+
+    <!-- REPRODUCTOR -->
+
+    <div class="player-controls">
+
+      <button
+        class="btn-purple"
+        id="musicButton"
+        type="button">
+        ▶ Reproducir canción
+      </button>
+
+      <input
+        class="progress-bar"
+        id="seekBar"
+        type="range"
+        min="0"
+        max="100"
+        step="0.1"
+        value="0"
+        aria-label="Posición de la canción"
+      >
+
+      <div class="time-row">
+        <span id="currentTime">0:00</span>
+        <span id="duration">0:00</span>
+      </div>
+
+      <p id="musicStatus" role="status">
+        La música comienza al abrir la sorpresa.
+      </p>
+
+      <a
+        class="direct-link"
+        href="./Snow%20Flower%20%28feat.%20Peakboy%29%20by%20V.mp3"
+        target="_blank"
+        rel="noopener">
+        Abrir archivo de audio directamente ↗
+      </a>
+
+    </div>
 
   </section>
 
-  <!-- CONTROLES DE EFECTOS -->
+  <!-- BOTONES DE EFECTOS -->
 
   <div class="actions">
 
@@ -604,6 +809,22 @@ button:focus-visible, a:focus-visible {
 
   </div>
 
+  <!-- IMAGEN QUE COMPARTISTE -->
+
+  <figure class="cover-section">
+
+    <img
+      src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSBqDjuOpptQByTSRfL6QDN01ODhH74hOc1jc75AOAE-g&amp;s=10"
+      alt="Portada de Snow Flower con una ilustración invernal y un paraguas rojo"
+      loading="lazy"
+    >
+
+    <figcaption class="cover-caption">
+      Snow Flower — V feat. Peakboy ❄️
+    </figcaption>
+
+  </figure>
+
 </section>
 
 </main>
@@ -618,9 +839,10 @@ button:focus-visible, a:focus-visible {
 const stars = document.getElementById('stars');
 
 for (let i = 0; i < 95; i++) {
-  const star = document.createElement('span');
-  star.className = 'star';
 
+  const star = document.createElement('span');
+
+  star.className = 'star';
   star.style.left = Math.random() * 100 + '%';
   star.style.top = Math.random() * 100 + '%';
   star.style.animationDelay = Math.random() * 4 + 's';
@@ -637,8 +859,11 @@ const roses = document.getElementById('roses');
 
 function createFalling(kind, temporary = false) {
 
-  const container = kind === 'snowflake' ? snow : roses;
-  const maxCount = kind === 'snowflake' ? 160 : 70;
+  const container =
+    kind === 'snowflake' ? snow : roses;
+
+  const maxCount =
+    kind === 'snowflake' ? 165 : 70;
 
   if (container.childElementCount >= maxCount) return;
 
@@ -646,10 +871,11 @@ function createFalling(kind, temporary = false) {
   element.className = kind;
 
   if (kind === 'snowflake') {
-    const types = ['❄', '❅', '❆', '•'];
+
+    const symbols = ['❄', '❅', '❆', '•'];
 
     element.textContent =
-      types[Math.floor(Math.random() * types.length)];
+      symbols[Math.floor(Math.random() * symbols.length)];
 
     element.style.fontSize =
       (9 + Math.random() * 17) + 'px';
@@ -658,14 +884,18 @@ function createFalling(kind, temporary = false) {
       .4 + Math.random() * .6;
 
   } else {
+
     element.textContent = '🌹';
+
     element.style.fontSize =
       (17 + Math.random() * 19) + 'px';
+
   }
 
-  const duration = kind === 'snowflake'
-    ? 7 + Math.random() * 10
-    : 9 + Math.random() * 8;
+  const duration =
+    kind === 'snowflake'
+      ? 7 + Math.random() * 10
+      : 9 + Math.random() * 8;
 
   element.style.left = Math.random() * 100 + '%';
   element.style.animationDuration = duration + 's';
@@ -678,7 +908,6 @@ function createFalling(kind, temporary = false) {
   if (temporary) {
 
     element.style.animationIterationCount = '1';
-    element.style.animationDelay = '0s';
 
     element.addEventListener(
       'animationend',
@@ -688,7 +917,6 @@ function createFalling(kind, temporary = false) {
 
   } else {
 
-    // Distribuir los copos y rosas por toda la pantalla
     element.style.animationDelay =
       -(Math.random() * duration) + 's';
 
@@ -697,38 +925,46 @@ function createFalling(kind, temporary = false) {
   container.appendChild(element);
 }
 
-// Nieve permanente
+// Crear nieve permanente
+
 for (let i = 0; i < 85; i++) {
   createFalling('snowflake');
 }
 
-// Rosas permanentes
+// Crear rosas permanentes
+
 for (let i = 0; i < 22; i++) {
   createFalling('rose');
 }
 
-// Boton mas nieve
+// Más nieve
+
 document.getElementById('moreSnow')
   .addEventListener('click', () => {
 
-    for (let i = 0; i < 30; i++) {
+    for (let i = 0; i < 35; i++) {
+
       setTimeout(
         () => createFalling('snowflake', true),
         i * 45
       );
+
     }
 
   });
 
-// Boton lluvia de rosas
+// Más rosas
+
 document.getElementById('moreRoses')
   .addEventListener('click', () => {
 
-    for (let i = 0; i < 28; i++) {
+    for (let i = 0; i < 30; i++) {
+
       setTimeout(
         () => createFalling('rose', true),
-        i * 80
+        i * 90
       );
+
     }
 
   });
@@ -743,6 +979,7 @@ const ctx = canvas.getContext('2d');
 let width = 0;
 let height = 0;
 let dpr = 1;
+
 let particles = [];
 
 const colors = [
@@ -756,6 +993,7 @@ const colors = [
 function resizeCanvas() {
 
   dpr = Math.min(window.devicePixelRatio || 1, 2);
+
   width = window.innerWidth;
   height = window.innerHeight;
 
@@ -844,11 +1082,203 @@ document.getElementById('fireworksButton')
   .addEventListener('click', launchFireworks);
 
 // ============================
+// REPRODUCTOR MP3
+// ============================
+
+const song = document.getElementById('song');
+
+const musicButton =
+  document.getElementById('musicButton');
+
+const musicStatus =
+  document.getElementById('musicStatus');
+
+const playingLabel =
+  document.getElementById('playingLabel');
+
+const turntable =
+  document.getElementById('turntable');
+
+const gifPanel =
+  document.getElementById('gifPanel');
+
+const seekBar =
+  document.getElementById('seekBar');
+
+const currentTimeLabel =
+  document.getElementById('currentTime');
+
+const durationLabel =
+  document.getElementById('duration');
+
+// Volumen inicial
+
+song.volume = 0.75;
+
+// Formatear segundos
+
+function formatTime(seconds) {
+
+  if (!Number.isFinite(seconds)) return '0:00';
+
+  const minutes = Math.floor(seconds / 60);
+  const secs = Math.floor(seconds % 60);
+
+  return minutes + ':' + String(secs).padStart(2, '0');
+
+}
+
+// Reproducir
+
+function startMusic() {
+
+  musicStatus.textContent = 'Cargando canción...';
+
+  const promise = song.play();
+
+  if (promise && typeof promise.catch === 'function') {
+
+    promise.catch((error) => {
+
+      console.warn('No se pudo reproducir:', error);
+
+      musicStatus.textContent =
+        'No se inició automáticamente. Presiona Reproducir para intentarlo.';
+
+    });
+
+  }
+
+}
+
+// Pausar
+
+function pauseMusic() {
+  song.pause();
+}
+
+// Botón reproducir / pausar
+
+musicButton.addEventListener('click', () => {
+
+  if (song.paused) {
+    startMusic();
+  } else {
+    pauseMusic();
+  }
+
+});
+
+// Cuando comienza realmente la canción
+
+song.addEventListener('playing', () => {
+
+  turntable.classList.add('playing');
+
+  musicButton.textContent = '⏸ Pausar canción';
+
+  playingLabel.textContent =
+    '♫ Reproduciendo Snow Flower';
+
+  musicStatus.textContent =
+    'Ahora está sonando nuestra canción.';
+
+  gifPanel.hidden = false;
+
+});
+
+// Cuando se pausa
+
+song.addEventListener('pause', () => {
+
+  turntable.classList.remove('playing');
+
+  musicButton.textContent = '▶ Reproducir canción';
+
+  playingLabel.textContent =
+    'Tocadiscos en pausa';
+
+  musicStatus.textContent = 'Música pausada.';
+
+  gifPanel.hidden = true;
+
+});
+
+// Cuando termina
+
+song.addEventListener('ended', () => {
+
+  turntable.classList.remove('playing');
+
+  musicButton.textContent = '▶ Reproducir de nuevo';
+
+  playingLabel.textContent =
+    'La canción ha terminado';
+
+  gifPanel.hidden = true;
+
+});
+
+// Duración de la canción
+
+song.addEventListener('loadedmetadata', () => {
+
+  durationLabel.textContent =
+    formatTime(song.duration);
+
+});
+
+// Actualizar barra de progreso
+
+song.addEventListener('timeupdate', () => {
+
+  currentTimeLabel.textContent =
+    formatTime(song.currentTime);
+
+  if (Number.isFinite(song.duration) && song.duration > 0) {
+
+    seekBar.value =
+      (song.currentTime / song.duration) * 100;
+
+  }
+
+});
+
+// Adelantar o retroceder
+
+seekBar.addEventListener('input', () => {
+
+  if (Number.isFinite(song.duration) && song.duration > 0) {
+
+    song.currentTime =
+      (Number(seekBar.value) / 100) * song.duration;
+
+  }
+
+});
+
+// Si el archivo MP3 no se encuentra
+
+song.addEventListener('error', () => {
+
+  musicStatus.textContent =
+    'No se pudo cargar el MP3. Comprueba que esté junto a index.html y que tenga exactamente el mismo nombre.';
+
+  turntable.classList.remove('playing');
+  gifPanel.hidden = true;
+
+});
+
+// ============================
 // ABRIR SORPRESA
 // ============================
 
 document.getElementById('openSurprise')
   .addEventListener('click', () => {
+
+    // Iniciar música directamente
+    // desde el clic del usuario
+    startMusic();
 
     const intro = document.getElementById('intro');
 
@@ -856,9 +1286,12 @@ document.getElementById('openSurprise')
 
     setTimeout(() => intro.remove(), 850);
 
+    // Fuegos artificiales iniciales
+
     launchFireworks();
 
-    // Lluvia inicial de rosas
+    // Lluvia de rosas inicial
+
     for (let i = 0; i < 25; i++) {
 
       setTimeout(
